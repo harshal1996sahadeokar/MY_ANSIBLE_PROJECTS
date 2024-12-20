@@ -1,0 +1,8 @@
+Objective: Provision Linux servers with Apache, MySQL, and PHP using Ansible.
+Key Features:
+
+Created playbooks to install and configure Apache, MySQL, and PHP.
+
+Automated database initialization and schema creation.
+
+Enabled secure communications using Ansible Vault for credentials
