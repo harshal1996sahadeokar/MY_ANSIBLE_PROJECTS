@@ -48,6 +48,17 @@ ansible/playbooks/monitoring_setup.yml
 Step 4: Execute the Workflow
 Provision Infrastructure:
 
+cd terraform/
+terraform init
+terraform apply
+Run Ansible Playbooks:
+
+
+cd ../ansible/
+ansible-playbook -i inventory/dynamic_inventory.py playbooks/nginx_setup.yml
+ansible-playbook -i inventory/dynamic_inventory.py playbooks/app_deployment.yml
+ansible-playbook -i inventory/dynamic_inventory.py playbooks/monitoring_setup.yml
+
 Step 5: Verify the Deployment
 Access the Load Balancer DNS to verify the web application.
 Check logs in CloudWatch to ensure monitoring is working.
