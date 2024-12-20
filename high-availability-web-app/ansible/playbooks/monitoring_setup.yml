@@ -1,0 +1,21 @@
+- name: Set up Monitoring Tools
+  hosts: all
+  become: true
+  tasks:
+    - name: Install CloudWatch Agent
+      yum:
+        name: amazon-cloudwatch-agent
+        state: present
+
+    - name: Configure CloudWatch Agent
+      template:
+        src: templates/cloudwatch-config.json.j2
+        dest: /etc/amazon-cloudwatch-agent/config.json
+      notify:
+        - Restart CloudWatch Agent
+
+  handlers:
+    - name: Restart CloudWatch Agent
+      service:
+        name: amazon-cloudwatch-agent
+        state: restarted
