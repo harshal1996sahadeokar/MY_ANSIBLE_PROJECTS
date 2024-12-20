@@ -1,0 +1,11 @@
+- name: Deploy Application
+  hosts: all
+  become: true
+  tasks:
+    - name: Copy application files
+      copy:
+        src: app/
+        dest: /var/www/html/
+        owner: nginx
+        group: nginx
+        mode: 0755
